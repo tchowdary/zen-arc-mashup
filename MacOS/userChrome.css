@@ -1,0 +1,1008 @@
+/* ============================
+   COMMON BASE STYLES 
+   ============================ */
+:root {
+  --zen-font-size: 14px;
+  --zen-font-family: Rubik;
+  --zen-letter-spacing: 0.2px;
+  --zen-icon-scale: 0.9;
+  --zen-navbar-height: 32px;
+}
+
+/* Base styles that apply everywhere */
+* {
+  font-size: var(--zen-font-size) !important;
+  font-family: var(--zen-font-family) !important;
+  letter-spacing: var(--zen-letter-spacing) !important;
+}
+
+/* Common hidden elements */
+#userContext-icons,
+#userContext-indicator,
+#userContext-label,
+#identity-icon-box[containerIcon],
+.urlbar-page-action[actionid="_testpilot-containers"],
+#pageAction-urlbar-_testpilot-containers,
+#PanelUI-button,
+#star-button-box,
+#tracking-protection-icon-container,
+#identity-icon-label,
+#reader-mode-button {
+  display: none !important;
+}
+
+/* Common icon styles */
+#back-button,
+#forward-button,
+#reload-button {
+  scale: var(--zen-icon-scale);
+}
+
+/* sets the linkly Extention to the arc copy link icon */
+#pageAction-urlbar-copy-frame-url_jeffersonscher_com {
+  list-style-image: url("icons/copy_link.svg") !important;
+  scale: 0.75;
+}
+
+/* makes the icons look nicer*/
+.zen-workspace-icon {
+  filter: saturate(140%) brightness(110%) !important;
+  opacity: 1 !important;
+}
+
+.subviewbutton[tooltiptext]:not([active="true"]) .zen-workspace-icon {
+  visibility: hidden;
+  position: relative;
+}
+
+.subviewbutton[tooltiptext]:not([active="true"]) .zen-workspace-icon::after {
+  content: "";
+  width: 4px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: visible !important;
+  z-index: 1;
+}
+
+.subviewbutton[tooltiptext][active="true"] .zen-workspace-icon {
+  visibility: visible;
+  filter: saturate(140%) brightness(110%) !important;
+  opacity: 1 !important;
+  width: auto !important;
+  height: auto !important;
+  background-color: transparent !important;
+  border-radius: 0;
+}
+
+.subviewbutton[tooltiptext]:not([active="true"]):hover .zen-workspace-icon {
+  visibility: visible !important;
+  filter: saturate(140%) brightness(110%) !important;
+  transform: scale(1);
+  opacity: 1 !important;
+}
+
+.subviewbutton[tooltiptext]:not([active="true"]):hover
+  .zen-workspace-icon::after {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+/* sets the expand sidebar svg */
+#zen-expand-sidebar-button {
+  list-style-image: url("icons/sidebar.svg") !important;
+  scale: 1;
+  margin-left: 1px !important;
+}
+
+/* sets the history svg */
+#history-panelmenu {
+  list-style-image: url("icons/archive.svg") !important;
+  scale: 0.9;
+  padding-inline-start: 3px !important;
+}
+
+/* sets the new tabs svg */
+#new-tab-button {
+  list-style-image: url("icons/new_tab.svg") !important;
+  scale: 0.9;
+  padding-inline-end: 3px !important;
+}
+
+#back-button {
+  list-style-image: url("icons/back.svg") !important;
+  scale: 0.8;
+}
+
+#forward-button {
+  list-style-image: url("icons/next.svg") !important;
+  scale: 0.8;
+}
+
+#reload-button {
+  list-style-image: url("icons/refresh.svg") !important;
+  scale: 0.9;
+}
+
+#unified-extensions-button {
+  list-style-image: url("icons/split.svg") !important;
+  scale: 0.71;
+}
+
+@media (-moz-bool-pref: "zen.view.compact") {
+  /* Removes the litle dot*/
+  .subviewbutton[tooltiptext][active="true"]::after,
+  .subviewbutton[tooltiptext][active="true"] .workspace-indicator {
+    display: none !important;
+  }
+
+  /* makes the icons look nicer*/
+  .zen-workspace-icon {
+    filter: saturate(140%) brightness(110%) !important;
+    opacity: 1 !important;
+  }
+
+  .subviewbutton[tooltiptext]:not([active="true"]) .zen-workspace-icon {
+    visibility: hidden;
+    position: relative;
+  }
+
+  .subviewbutton[tooltiptext]:not([active="true"]) .zen-workspace-icon::after {
+    content: "";
+    width: 4px;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    visibility: visible !important;
+    z-index: 1;
+  }
+
+  .subviewbutton[tooltiptext][active="true"] .zen-workspace-icon {
+    visibility: visible;
+    filter: saturate(140%) brightness(110%) !important;
+    opacity: 1 !important;
+    width: auto !important;
+    height: auto !important;
+    background-color: transparent !important;
+    border-radius: 0;
+  }
+
+  .subviewbutton[tooltiptext]:not([active="true"]):hover .zen-workspace-icon {
+    visibility: visible !important;
+    filter: saturate(140%) brightness(110%) !important;
+    transform: scale(1);
+    opacity: 1 !important;
+  }
+
+  .subviewbutton[tooltiptext]:not([active="true"]):hover
+    .zen-workspace-icon::after {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  /* Other icons */
+  #zen-profile-button-icon {
+    list-style-image: url("icons/zen-alpha-white.svg") !important;
+    scale: 1.1;
+  }
+
+  #unified-extensions-button {
+    list-style-image: url("icons/split.svg") !important;
+    scale: 0.71;
+  }
+
+  /* Fix for Downloads button using content */
+  #downloads-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline-start: 3px !important;
+    padding-inline-end: 3px !important;
+
+    background: none !important;
+  }
+
+  #downloads-button::after {
+    content: url("icons/downloads.svg") !important;
+    display: block;
+    scale: 1;
+    padding: 0;
+    margin-top: 1.5px;
+    margin-left: -19.5px;
+  }
+
+  #downloads-indicator-icon,
+  #downloads-indicator-progress-outer,
+  #downloads-indicator-start-box,
+  #downloads-indicator-finish-box {
+    display: none !important;
+  }
+
+  /* HIDES THE ICONS */
+
+  #identity-permission-box {
+    display: none !important;
+  }
+
+  #identity-icon {
+    list-style-image: url("icons/settings.svg") !important;
+    scale: 0.75;
+  }
+
+  #identity-icon-box {
+    background-color: transparent !important;
+  }
+
+  #urlbar-input,
+  #urlbar-searchmode-and-input-box-container,
+  #urlbar-input-box,
+  #urlbar-scheme {
+    flex-grow: 1 !important;
+  }
+
+  #urlbar-input {
+    font-size: 13px !important;
+    line-height: 14px !important;
+    color: white !important;
+  }
+
+  .urlbar-input {
+    text-align: center !important;
+  }
+
+  .urlbar-input {
+    /* Styles for the outer container, if needed */
+    display: inline-block;
+    /* Ensures the container itself doesn't stretch */
+  }
+
+  .urlbar-input div {
+    display: inline-block;
+    width: auto;
+    white-space: nowrap;
+    padding: 5px;
+  }
+
+  #titlebar-buttonbox {
+    padding: 0px !important;
+    margin: 0px !important;
+  }
+
+  #zen-sidebar-top-buttons {
+    height: 32px !important;
+    min-height: 32px !important;
+  }
+
+  #nav-bar {
+    height: 32px !important;
+    min-height: 32px !important;
+    padding: 0 !important;
+  }
+
+  #urlbar-background {
+    margin: 4px;
+    border-radius: 8px !important;
+  }
+
+  #vertical-pinned-tabs-container {
+    padding-top: 0px !important;
+    margin-top: 0px !important;
+  }
+
+  #tabbrowser-tabbox {
+    padding-top: 0px !important;
+  }
+
+  #urlbar-zoom-button {
+    display: None !important;
+  }
+
+  #nav-bar {
+  }
+
+  #zen-workspaces-button {
+    background-color: transparent !important;
+  }
+
+  .titlebar-button.titlebar-min {
+    list-style-image: url("icons/minimize.svg") !important;
+    padding: 15px !important;
+    padding-left: 17px !important;
+    padding-right: 17px !important;
+    scale: 0.9;
+  }
+
+  .titlebar-button.titlebar-max {
+    list-style-image: url("icons/maximize.svg") !important;
+    padding: 15px !important;
+    padding-left: 17px !important;
+    padding-right: 17px !important;
+    scale: 0.9;
+  }
+
+  .titlebar-button.titlebar-close {
+    list-style-image: url("icons/close.svg") !important;
+    padding: 15px !important;
+    padding-left: 17px !important;
+    padding-right: 20px !important;
+    scale: 0.9;
+    margin-right: -2px !important;
+  }
+
+  .titlebar-button.titlebar-restore {
+    list-style-image: url("icons/maximize.svg") !important;
+    padding: 10px !important;
+    padding-left: 17px !important;
+    padding-right: 17px !important;
+    scale: 1;
+  }
+
+  #nav-bar {
+    height: 32px !important;
+    min-height: 32px !important;
+    padding: 0 !important;
+  }
+
+  .tab-text,
+  .tab-label {
+    color: white !important;
+  }
+
+  .tab-close-button,
+  .close-icon {
+    color: white !important;
+  }
+
+  /*#tabbrowser-arrowscrollbox::before {
+      content: "";
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      color: rgba(255, 255, 255, 0.7);
+      width: 100%;
+      height: 28px;
+      background-image: url("chrome://global/skin/icons/plus.svg");
+      background-position: 10px center;
+      background-repeat: no-repeat;
+      background-size: 16px;
+      border-radius: 4px;
+      padding: 18px;
+      -moz-context-properties: fill;
+      fill: rgba(255, 255, 255, 0.7);
+    
+      -moz-window-dragging: no-drag;
+      cursor: pointer;
+      margin-top: 2px !important;
+      margin-bottom: 5px !important;
+    
+      padding-left: 36px;
+    
+      box-sizing: border-box;
+    
+      position: relative;
+      flex-shrink: 0;
+      font-size: 14px;
+    }
+    */
+
+  /* Make the parent container a flexbox to handle resizing */
+  #zen-workspaces-button {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+
+  /* Style for the toolbar buttons */
+  #zen-workspaces-button .subviewbutton {
+    flex: 1;
+    min-width: 5px;
+    max-width: 100px;
+    height: auto;
+    padding: 4px;
+    margin: 2px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+  }
+
+  .tabbrowser-tab[selected="true"] .tab-stack .tab-background {
+    background-color: rgba(255, 255, 255, 0.6) !important;
+  }
+
+  #urlbar-background {
+    background-color: rgba(0, 0, 0, 0) !important;
+  }
+
+  #urlbar:is([breakout][breakout-extend], [breakout][usertyping][focused]) {
+    #urlbar-input {
+      font-size: 16px !important;
+    }
+
+    #urlbar {
+      border: initial;
+      width: auto;
+      margin: 0;
+      position: static;
+    }
+
+    z-index: 2;
+    position: fixed !important;
+    bottom: auto !important;
+    top: 20vh !important;
+    padding-left: 6px !important;
+    padding-right: 8px !important;
+
+    left: 18vw !important;
+    right: 18vw !important;
+    width: 64vw !important;
+
+    &:after {
+      content: "";
+      position: fixed;
+      pointer-events: none;
+
+      width: 100vw;
+      height: 100vh;
+
+      top: 0px;
+      left: 0px;
+
+      background-color: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
+
+      z-index: -1;
+    }
+
+    #identity-box {
+      margin: auto 0;
+      height: 30px;
+      margin-right: 10px;
+    }
+
+    .urlbar-go-button {
+      margin: auto 0;
+    }
+
+    #urlbar-background {
+      background-color: #11201e !important;
+    }
+  }
+
+  #urlbar-container {
+    position: relative;
+  }
+
+  #urlbar {
+    border: none !important;
+    width: 150px !important;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    /* transition: width 0.3s ease; */
+  }
+
+  #urlbar:focus-within {
+    width: 300px !important;
+  }
+}
+
+@media not (-moz-bool-pref: "zen.view.compact") {
+  @media not (-moz-bool-pref: "zen.tabs.vertical.right-side") {
+
+     /* Fix for Downloads button using content */
+  #downloads-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline-start: 3px !important;
+    padding-inline-end: 3px !important;
+
+    background: none !important;
+  }
+
+  #downloads-button::after {
+    content: url("icons/downloads.svg") !important;
+    display: block;
+    scale: 1;
+    padding: 0;
+    margin-top: 1.5px;
+    margin-left: -19.5px;
+  }
+
+  #downloads-indicator-icon,
+  #downloads-indicator-progress-outer,
+  #downloads-indicator-start-box,
+  #downloads-indicator-finish-box {
+    display: none !important;
+  }
+  
+    /* Window Controls Positioning and Styling */
+    .titlebar-buttonbox-container {
+      position: absolute;
+      width: 100vw;
+      left: 0;
+
+      display: flex !important;
+      padding: 6px 3px 3px 5px;
+    }
+
+    .titlebar-buttonbox {
+      position: absolute;
+      left: 0px;
+      bottom: 40px;
+      display: flex;
+      margin-right: 20px;
+    }
+
+    /* Window Control Buttons Styling */
+    .titlebar-button {
+      padding: 0px !important;
+      min-height: 13px !important;
+      min-width: 13px !important;
+      align-self: center;
+      margin-left: 6px !important;
+      border-radius: 50px;
+      transition: all 100ms;
+    }
+
+    .titlebar-min {
+      background-color: hsl(130, 50%, 40%) !important;
+    }
+
+    .titlebar-max,
+    .titlebar-restore {
+      background-color: hsl(60, 50%, 50%) !important;
+    }
+
+    .titlebar-close {
+      background-color: hsl(0, 50%, 50%) !important;
+    }
+
+    .titlebar-button > image {
+      visibility: collapse !important;
+    }
+
+    @media (-moz-bool-pref: "theme.zen-minimal-exit-menu.enable-macos-identic") {
+      .titlebar-button:hover {
+        opacity: 0.25 !important;
+      }
+    }
+
+    @media not (-moz-bool-pref: "theme.zen-minimal-exit-menu.enable-macos-identic") {
+      .titlebar-button {
+        background-color: var(--zen-colors-border) !important;
+      }
+
+      .titlebar-min:hover {
+        background-color: hsl(130, 50%, 40%) !important;
+      }
+
+      .titlebar-max:hover,
+      .titlebar-restore:hover {
+        background-color: hsl(60, 50%, 50%) !important;
+      }
+
+      .titlebar-close:hover {
+        background-color: hsl(0, 50%, 50%) !important;
+      }
+
+      .titlebar-button:hover {
+        min-height: 20px !important;
+      }
+    }
+
+    /* Make items belonging to the content/nav area visible when positioned outside */
+    #zen-appcontent-wrapper {
+      overflow: visible;
+    }
+
+    /* Sidebar - Add Space for URL Bar */
+    #TabsToolbar {
+      padding-top: 38px;
+      margin-top: 28px;
+    }
+
+    /* Content Area Styling - Add Shadow */
+    .browserContainer {
+      box-shadow: 0 0px 5px 2px rgb(0 0 0 / 0.1);
+    }
+
+    /* Navigation area containers */
+    #zen-appcontent-navbar-container {
+      container-type: inline-size;
+      height: var(--zen-element-separation);
+      z-index: 1;
+    }
+
+    #nav-bar {
+      --sidebar-width: calc(100vw - 100cqw);
+      width: var(--sidebar-width);
+      container-name: sidebar;
+      container-type: inline-size;
+      overflow: visible !important;
+      position: fixed !important;
+      right: calc(100cqw);
+    }
+
+    /* Hide additional chrome elements */
+    #nav-bar
+      .chromeclass-toolbar-additional:not(
+        #PersonalToolbar,
+        #personal-bookmarks,
+        #back-button,
+        #forward-button,
+        #stop-reload-button,
+        #unified-extensions-button
+      ) {
+      display: none;
+    }
+
+    /* User Setting - Maintain Default Sidebar Width */
+    @media (-moz-bool-pref: "ark-left.maintain-default-sidebar-width") {
+      #navigator-toolbox {
+        min-width: 215px !important;
+        max-width: 215px !important;
+      }
+
+      #zen-sidebar-splitter {
+        pointer-events: none;
+      }
+    }
+
+    /* Hide Navbar Buttons */
+    #zen-expand-sidebar-button,
+    #zen-profile-button,
+    .zen-sidebar-action-button {
+      display: none;
+    }
+
+    /* Hide Three Dots */
+    #PanelUI-button {
+      opacity: 0%;
+      pointer-events: none;
+    }
+
+    /* Navigation Buttons */
+    #back-button,
+    #forward-button,
+    #stop-reload-button,
+    #unified-extensions-button {
+      position: fixed;
+      top: var(--zen-element-separation);
+      z-index: 1;
+      pointer-events: auto !important;
+    }
+
+    #back-button {
+      right: 60px;
+    }
+
+    #forward-button {
+      right: 55px;
+      display: none;
+    }
+
+    #stop-reload-button {
+      right: 30px;
+    }
+
+    #unified-extensions-button {
+      right: 0px;
+    }
+
+    #personal-bookmarks {
+      top: 25px;
+      right: -7px;
+    }
+
+    /* Hide on Resize - Under 185px */
+    @container sidebar (max-width: 185px) {
+      #stop-reload-button {
+        visibility: hidden;
+      }
+
+      #back-button {
+        right: 35px;
+      }
+
+      #forward-button {
+        right: 15px;
+        display: none;
+      }
+    }
+
+    /* bookmarks*/
+    #PersonalToolbar {
+      display: none !important;
+    }
+
+    /* URL Bar Styling */
+    #urlbar-container {
+      position: fixed !important;
+      top: 65px;
+      left: 3px;
+      width: calc(100% - 10px) !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      z-index: 1;
+    }
+
+    #urlbar-input {
+      padding-left: 10px !important;
+    }
+
+    #zen-appcontent-wrapper {
+      overflow: visible !important;
+    }
+
+    #navigator-toolbox {
+      padding-top: 40px !important;
+    }
+
+    #urlbar {
+      /* box-shadow: none;*/
+      height: 35px;
+      border-radius: 20px !important;
+      border: 0px solid var(--zen-colors-border) !important;
+      box-shadow: 0 0px 11px 1px rgb(0 0 0 / 0.3) !important;
+    }
+
+    #urlbar:not([focused="true"]):not([breakout-extend="true"])
+      > #urlbar-background {
+      background: color-mix(
+        in srgb,
+        var(--tab-hover-background-color) 10%,
+        transparent
+      ) !important;
+    }
+
+    .urlbarView-body-outer,
+    .urlbarView-body-inner {
+      box-sizing: border-box;
+    }
+
+    #urlbar-input {
+      font-weight: 400;
+      font-size: 0.95em;
+      padding-left: 10px;
+      color: color-mix(in srgb, currentColor 65%, transparent);
+    }
+
+    #urlbar [id$="-box"] {
+      display: none;
+    }
+
+    @media (-moz-bool-pref: "ark-left.hide-http-warning-icon") {
+      #urlbar
+        [id$="-box"]:has(
+          #identity-icon[tooltiptext="Connection is not secure"]
+        ) {
+        display: inherit;
+
+        margin-right: 0px !important;
+      }
+    }
+
+    label[value="Not Secure"] {
+      display: none;
+    }
+
+    #identity-icon[tooltiptext="Connection is not secure"] {
+      color: #d46955;
+    }
+
+    #urlbar
+      [id$="-button"]:not(#reader-mode-button, #picture-in-picture-button) {
+      display: none;
+    }
+
+    #urlbar [id$="-container"] {
+      display: none;
+    }
+
+    #nav-bar #PanelUI-button {
+      position: absolute;
+
+      top: var(--zen-element-separation);
+
+      left: 248px !important;
+    }
+
+    #unified-extensions-panel {
+      animation: ease-in-out;
+
+      transition-duration: 0.13s;
+    }
+
+    #customizationui-widget-panel {
+      border-radius: var(--zen-border-radius);
+
+      animation: ease-in-out;
+
+      transition-duration: 0.13s;
+    }
+
+    #window-modal-dialog {
+      height: 100vh;
+
+      max-height: 100%;
+    }
+
+    #window-modal-dialog .dialogTemplate {
+      position: absolute;
+
+      top: 50%;
+
+      left: 50%;
+
+      transform: translate(-50%, -50%);
+    }
+
+    #window-modal-dialog .dialogBox {
+      &:not(.spotlightBox) {
+        box-shadow: 0 0px 35px 35px rgb(0 0 0 / 0.2);
+      }
+    }
+
+    /* URL Bar Open Styling */
+
+    #urlbar-container:has(> #urlbar[open]) {
+      #urlbar {
+        left: 0;
+
+        top: 0;
+
+        width: 760px;
+
+        overflow: hidden !important;
+
+        box-shadow: 0 0px 11px 1px rgb(0 0 0 / 0.5) !important;
+      }
+
+      #urlbar-input {
+        font-size: 1.2em;
+
+        color: unset;
+      }
+
+      .urlbar-input-container {
+        height: 50px;
+      }
+
+      .urlbarView-row {
+        height: 50px;
+      }
+
+      .urlbar-go-button {
+        display: none;
+      }
+
+      .urlbarView-row-inner {
+        flex-wrap: unset;
+
+        font-weight: 300 !important;
+
+        font-size: 0.98em;
+      }
+
+      .urlbarView-row-inner strong {
+        font-weight: unset !important;
+      }
+
+      .urlbarView-no-wrap {
+        flex-basis: unset;
+
+        font-size: inherit;
+      }
+
+      .urlbarView-title-separator {
+        color: color-mix(in srgb, currentColor 30%, transparent);
+      }
+
+      .urlbarView-url {
+        --urlbarView-second-line-indent: 15px;
+
+        font-size: inherit;
+
+        color: color-mix(in srgb, currentColor 30%, transparent);
+      }
+
+      .urlbar-background {
+        padding-left: 100px !important;
+      }
+    }
+
+    /*new*/
+
+    #unified-extensions-view {
+      --uei-icon-size: 24px;
+
+      --extensions-in-row: 4;
+
+      width: 100% !important;
+
+      :is(
+          toolbarseparator,
+          .unified-extensions-item-menu-button.subviewbutton,
+          .unified-extensions-item-action-button
+            .unified-extensions-item-contents,
+          #unified-extensions-description,
+          .panel-header
+        ) {
+        display: none !important;
+      }
+
+      :is(
+          #overflowed-extensions-list,
+          #unified-extensions-area,
+          .unified-extensions-list
+        ) {
+        display: grid !important;
+
+        grid-template-columns: repeat(var(--extensions-in-row), auto);
+
+        justify-items: center !important;
+
+        align-items: center !important;
+      }
+
+      :is(
+          :is(#unified-extensions-area, .unified-extensions-list)
+            .unified-extensions-item,
+          .unified-extensions-list
+        ) {
+        max-width: max-content;
+      }
+
+      #unified-extensions-area {
+        margin-bottom: 5px !important;
+
+        border-top: 1px solid var(--panel-separator-color);
+
+        border-bottom: 1px solid var(--panel-separator-color);
+
+        padding-top: 5px !important;
+
+        padding-bottom: 5px !important;
+
+        display: none;
+      }
+
+      .unified-extensions-item[attention]
+        > .unified-extensions-item-action-button.subviewbutton {
+        background-position: left
+          calc(var(--uei-dot-horizontal-position-in-panel) - 4px) bottom
+          var(--uei-dot-vertical-position-in-panel) !important;
+      }
+
+      .unified-extensions-item-action-button {
+        padding-right: 3px !important;
+      }
+
+      /*! display: none; */
+    }
+
+    /* ####################################################
+
+Kill statuspanel
+
+*/
+
+    #statuspanel {
+      display: none !important;
+    }
+  }
+}
