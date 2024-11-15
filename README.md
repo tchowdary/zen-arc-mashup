@@ -10,12 +10,12 @@ Inspired by
 
  # Bookmarks
 
-about:config
-browser.toolbars.bookmarks.visibility --> always
-move bookmarks toolbar items to navbar
-set browser.toolbars.bookmarks.visibility --> never {back}
-create userChrome.css file in "chrome" folder
-paste css code in userChrome.css
+- about:config
+- browser.toolbars.bookmarks.visibility --> always
+- move bookmarks toolbar items to navbar
+- set browser.toolbars.bookmarks.visibility --> never {back}
+- create userChrome.css file in "chrome" folder
+- paste css code in userChrome.css
 
 # Download button at the top
 
